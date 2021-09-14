@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fh.mapper.dsno1.form.MyFormMapper">
+	
+	<!--表名 -->
+	<sql id="tableName">
+		FORM_MYFORM
+	</sql>
+	
+	<!--模版表名 -->
+	<sql id="teTtableName">
+		FORM_TEMPLATES
+	</sql>
+	
+	<!--数据字典表名 -->
+	<sql id="dicTableName">
+		SYS_DICTIONARIES
+	</sql>
+	
+	<!-- 字段 -->
+	<sql id="Field">
+		f.TITLE,	
+		f.HTMLCONTENT,	
+		f.CTIME,	
+		f.TYPE,	
+		f.USERNAME,	
+		f.ISPRIVATE,	
+		f.ISIMAG,	
+		f.ISFILE,
+		f.ISFWB,
+		f.ISLC,
+		f.DATAPRIVATE,	
+		f.TEMPLATES_ID,	
+		f.MYFORM_ID
+	</sql>
+	
+	<!-- 字段用于新增 -->
+	<sql id="Field2">
+		TITLE,	
+		HTMLCONTENT,	
+		CTIME,	
+		TYPE,	
+		USERNAME,	
+		ISPRIVATE,	
+		ISIMAG,	
+		ISFILE,
+		ISFWB,
+		ISLC,	
+		DATAPRIVATE,	
+		TEMPLATES_ID,	
+		MYFORM_ID
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{TITLE},	
+		#{HTMLCONTENT},	
+		#{CTIME},	
+		#{TYPE},	
+		#{USERNAME},	
+		#{ISPRIVATE},	
+		#{ISIMAG},	
+		#{ISFILE},	
+		#{ISFWB},	
+		#{ISLC},	
+		#{DATAPRIVATE},	
+		#{TEMPLATES_ID},	
+		#{MYFORM_ID}
+	</sql>
+	
+	<!-- 新增-->
+	<insert id="save" parameterType="pd">
+		insert into 
+	<include refid="tableName"></include>
+		(
+	<include refid="Field2"></include>
+		) values (
+	<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 删除-->
+	<delete id="delete" parameterType="pd">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			MYFORM_ID = #{MYFORM_ID}
+	</delete>
+	
+	<!-- 修改 -->
+	<update id="edit" parameterType="pd">
+		update
+		<include refid="tableName"></include>
+		set 
+			TITLE = #{TITLE},
+			HTMLCONTENT = #{HTMLCONTENT},
+			TYPE = #{TYPE},
+			ISPRIVATE = #{ISPRIVATE},
+			ISIMAG = #{ISIMAG},
+			ISFILE = #{ISFILE},
+			ISFWB = #{ISFWB},
+			ISLC = #{ISLC},
+			DATAPRIVATE = #{DATAPRIVATE},
+			TEMPLATES_ID = #{TEMPLATES_ID},
+			MYFORM_ID = MYFORM_ID
+		where 
+			MYFORM_ID = #{MYFORM_ID}
+	</update>
+	
+	<!-- 通过ID获取数据 -->
+	<select id="findById" parameterType="pd" resultType="pd">
+		select 
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+		where 
+			f.MYFORM_ID = #{MYFORM_ID}
+	</select>
+	
+	<!-- 列表 -->
+	<select id="datalistPage" parameterType="page" resultType="pd">
+		select
+			d4.BIANMA BIANMA4,
+			d4.NAME DNAME4,
+			f.TITLE,	
+			f.CTIME,	
+			f.TYPE,	
+			f.USERNAME,	
+			f.ISPRIVATE,	
+			f.ISIMAG,	
+			f.ISFILE,
+			f.ISFWB,	
+			f.ISLC,	
+			f.DATAPRIVATE,	
+			f.TEMPLATES_ID,	
+			f.MYFORM_ID,
+			t1.TITLE TTITLE
+		from 
+		<include refid="tableName"></include> f
+			left join 
+			<include refid="dicTableName"></include> d4
+			on f.TYPE = d4.BIANMA
+			left join 
+			<include refid="teTtableName"></include> t1  
+			on f.TEMPLATES_ID = t1.FORMTEMPLATES_ID
+		where 1=1
+			and (
+				f.USERNAME = #{pd.USERNAME}
+				or
+				f.ISPRIVATE = 'false'
+			)
+		<if test="pd.KEYWORDS != null and pd.KEYWORDS != ''"><!-- 关键词检索 -->
+			and
+				(
+					f.TITLE LIKE CONCAT(CONCAT('%', #{pd.KEYWORDS}),'%')
+					or
+					t1.TITLE LIKE CONCAT(CONCAT('%', #{pd.KEYWORDS}),'%')
+					or
+					f.USERNAME LIKE CONCAT(CONCAT('%', #{pd.KEYWORDS}),'%')
+				)
+		</if>
+		<if test="pd.TYPE != null and pd.TYPE != ''"><!-- 类型检索 -->
+			and f.TYPE = #{pd.TYPE}
+		</if>
+		order by f.CTIME desc
+	</select>
+	
+	<!-- 列表(全部) -->
+	<select id="listAll" parameterType="pd" resultType="pd">
+		select
+		<include refid="Field"></include>
+		from 
+		<include refid="tableName"></include> f
+	</select>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteAll" parameterType="String">
+		delete from
+		<include refid="tableName"></include>
+		where 
+			MYFORM_ID in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                 #{item}
+		</foreach>
+	</delete>
+	
+	<!-- fh313596790qq(青苔) -->
+</mapper>
