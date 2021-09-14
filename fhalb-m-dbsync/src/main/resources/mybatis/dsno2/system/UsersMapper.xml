@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fh.mapper.dsno2.system.UsersMapper">
+	
+	<!--用户表名 -->
+	<sql id="tableName">
+		SYS_USER
+	</sql>
+
+	<!-- 字段 -->
+	<sql id="Field">
+		USER_ID,
+		USERNAME,
+		PASSWORD,
+		NAME,
+		ROLE_ID,
+		LAST_LOGIN,
+		IP,
+		STATUS,
+		BZ,
+		SKIN,
+		EMAIL,
+		NUMBER,
+		PHONE,
+		ROLE_IDS
+	</sql>
+	
+	<!-- 字段值 -->
+	<sql id="FieldValue">
+		#{USER_ID},
+		#{USERNAME},
+		#{PASSWORD},
+		#{NAME},
+		#{ROLE_ID},
+		#{LAST_LOGIN},
+		#{IP},
+		#{STATUS},
+		#{BZ},
+		#{SKIN},
+		#{EMAIL},
+		#{NUMBER},
+		#{PHONE},
+		#{ROLE_IDS}
+	</sql>
+	
+	<!-- 新增用户 -->
+	<insert id="saveUser" parameterType="pd" >
+		insert into <include refid="tableName"></include> (
+			<include refid="Field"></include>
+		) values (
+			<include refid="FieldValue"></include>
+		)
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="editUser" parameterType="pd" >
+		update  <include refid="tableName"></include>
+			set NAME 					= #{NAME},
+				ROLE_ID 				= #{ROLE_ID},
+				ROLE_IDS 				= #{ROLE_IDS},
+				BZ						= #{BZ},
+				EMAIL					= #{EMAIL},
+				NUMBER					= #{NUMBER},
+				PHONE					= #{PHONE}
+			<if test="PASSWORD != null and PASSWORD != ''">
+				,PASSWORD				= #{PASSWORD}
+			</if>
+		where 
+				USER_ID = #{USER_ID}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="pd">
+		delete from 
+			<include refid="tableName"></include>
+		where 
+			USER_ID = #{USER_ID}
+		and 
+				USER_ID != '1'
+	</delete>
+	
+	<!-- 批量删除用户 -->
+	<delete id="deleteAllUser" parameterType="String" >
+		delete from <include refid="tableName"></include>
+		where 
+			USER_ID in
+  			 <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+                  #{item}
+             </foreach>
+            and 
+				USER_ID != '1'
+	</delete>
+
+<!-- fh 31 359 67 90qq(青 苔) -->
+</mapper>
