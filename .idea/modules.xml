@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/fhalb.iml" filepath="$PROJECT_DIR$/.idea/fhalb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-boot-admin/fhalb-boot-admin.iml" filepath="$PROJECT_DIR$/fhalb-boot-admin/fhalb-boot-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-gateway/fhalb-gateway.iml" filepath="$PROJECT_DIR$/fhalb-gateway/fhalb-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-dbmanage/fhalb-m-dbmanage.iml" filepath="$PROJECT_DIR$/fhalb-m-dbmanage/fhalb-m-dbmanage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-dbsync/fhalb-m-dbsync.iml" filepath="$PROJECT_DIR$/fhalb-m-dbsync/fhalb-m-dbsync.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-flowable/fhalb-m-flowable.iml" filepath="$PROJECT_DIR$/fhalb-m-flowable/fhalb-m-flowable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-im/fhalb-m-im.iml" filepath="$PROJECT_DIR$/fhalb-m-im/fhalb-m-im.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-oa/fhalb-m-oa.iml" filepath="$PROJECT_DIR$/fhalb-m-oa/fhalb-m-oa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-system/fhalb-m-system.iml" filepath="$PROJECT_DIR$/fhalb-m-system/fhalb-m-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fhalb-m-tools/fhalb-m-tools.iml" filepath="$PROJECT_DIR$/fhalb-m-tools/fhalb-m-tools.iml" />
+    </modules>
+  </component>
+</project>

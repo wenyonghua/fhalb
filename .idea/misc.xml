@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/fhalb-boot-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-dbmanage/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-dbsync/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-flowable/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-im/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-oa/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-system/pom.xml" />
+        <option value="$PROJECT_DIR$/fhalb-m-tools/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

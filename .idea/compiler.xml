@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="fhalb-m-flowable" />
+        <module name="fhalb-m-oa" />
+        <module name="fhalb-m-dbmanage" />
+        <module name="fhalb-m-im" />
+        <module name="fhalb-m-tools" />
+        <module name="fhalb-boot-admin" />
+        <module name="fhalb-gateway" />
+        <module name="fhalb-m-system" />
+        <module name="fhalb-m-dbsync" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fhalb-boot-admin" target="1.8" />
+      <module name="fhalb-gateway" target="1.8" />
+      <module name="fhalb-m-dbmanage" target="1.8" />
+      <module name="fhalb-m-dbsync" target="1.8" />
+      <module name="fhalb-m-flowable" target="1.8" />
+      <module name="fhalb-m-im" target="1.8" />
+      <module name="fhalb-m-oa" target="1.8" />
+      <module name="fhalb-m-system" target="1.8" />
+      <module name="fhalb-m-tools" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="fhalb-boot-admin" options="-parameters" />
+      <module name="fhalb-gateway" options="-parameters" />
+      <module name="fhalb-m-dbmanage" options="-parameters" />
+      <module name="fhalb-m-dbsync" options="-parameters" />
+      <module name="fhalb-m-flowable" options="-parameters" />
+      <module name="fhalb-m-im" options="-parameters" />
+      <module name="fhalb-m-oa" options="-parameters" />
+      <module name="fhalb-m-system" options="-parameters" />
+      <module name="fhalb-m-tools" options="-parameters" />
+    </option>
+  </component>
+</project>
